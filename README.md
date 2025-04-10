@@ -35,7 +35,7 @@ cd TaskManagement-FastAPI
 ### 2. Create Virtual Environment & Install Dependencies
 ```bash
 python -m venv venv
-# On Linux source venv/bin/activate
+# On Linux: source venv/bin/activate
 # On Windows: venv\Scripts\activate
 
 pip install -r requirements.txt
