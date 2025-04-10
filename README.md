@@ -1,6 +1,6 @@
-# Task Management API
+# Task Management APP
 
-A simple task management API built using **FastAPI**, **SQLAlchemy**, and **MySQL**, supporting user authentication and task CRUD operations.
+A simple task management APP built using **FastAPI**, **SQLAlchemy**, and **MySQL**, supporting user authentication and task CRUD operations.
 
 ---
 
@@ -35,18 +35,20 @@ cd TaskManagement-FastAPI
 ### 2. Create Virtual Environment & Install Dependencies
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# On Linux source venv/bin/activate
+# On Windows: venv\Scripts\activate
+
 pip install -r requirements.txt
 ```
 
 ### 3. Configure Database
 Make sure you have MySQL running, and create a database:
 ```sql
-CREATE DATABASE task_db;
+CREATE DATABASE TaskDB;
 ```
 Then update your MySQL URL inside `TaskApp/Database.py`:
 ```python
-DATABASE_URL = "mysql+pymysql://username:password@localhost/task_db"
+DATABASE_URL = "mysql+pymysql://username:password@localhost/TaskDB"
 ```
 
 ### 4. Run the Server
@@ -57,18 +59,30 @@ uvicorn TaskApp.main:app --reload
 ---
 
 ## API Endpoints
-
+```
+  Base Url : http://127.0.0.1:8000  
+```
 ### Auth
-- `POST /register/` - Register a new user
-- `POST /login/` - Get JWT token
+- `POST /registration` - Register a new user
+- `POST /login/` - Get JWT token `
+ 
+   While login put email on username field . Because of using OAuth2PasswordRequestForm 
+  ![login](https://github.com/user-attachments/assets/775001fc-75f8-42d8-958e-c608bf96f4fd)
 
 ### Tasks
-- `GET /tasks/` - Get logged-in user's tasks
-- `GET /tasks/{id}` - Retrieve specific task
-- `POST /tasks/` - Create new task (Auth required)
-- `PUT /tasks/{id}` - Update a task (Only by owner)
-- `PATCH /tasks/{id}` - Partially update a task (Only by owner)
-- `DELETE /tasks/{id}` - Delete task (Only by owner)
+- `GET /tasks/` -            Get all user's tasks with user informations (Auth required)
+ 
+- `GET /tasks/individual/ -  Get only logged user tasks with his/her information (Auth required)
+ 
+- `GET /tasks/{id}` -        Retrieve specific task (Auth required)
+ 
+- `POST /tasks/` -           Create new task (Auth required)
+ 
+- `PUT /tasks/{id}` -        Update a task (Only by owner) (Auth required)
+ 
+- `PATCH /tasks/{id}` -      Partially update a task (Only by owner) (Auth required)
+ 
+- `DELETE /tasks/{id}` -     Delete task (Only by owner) (Auth required)
 
 ---
 
@@ -90,14 +104,5 @@ uvicorn TaskApp.main:app --reload
 
 ---
 
-## Example `.env` (if needed)
-```
-MYSQL_USER=root
-MYSQL_PASSWORD=yourpassword
-MYSQL_DB=task_db
-```
-
----
-
-## Made With 💖
+## Made With 💖 By
 ## Rupak Biswas
